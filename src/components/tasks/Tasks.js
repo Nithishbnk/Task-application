@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./Tasks.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BiCheckDouble } from "@fortawesome/free-solid-svg-icons";
 
 export default function Tasks(props) {
   const [task, setTask] = useState([]);
@@ -41,8 +39,21 @@ export default function Tasks(props) {
       }
     });
     task.splice(completeindex,1);
+
   }
 
+  function deleteTask(title) {
+    var deleteindex;
+    completed.map((item, index) => {
+      if (item.title === title) {
+        deleteindex = index;
+      }
+    });
+    completed.splice(deleteindex,1);
+    setCompleted((oldArray) => [...oldArray]);
+
+  }
+  
   return (
     <>
       <div class="task-form">
@@ -78,12 +89,15 @@ export default function Tasks(props) {
       </div>
 
       <div class="item-group">
-        <ul class="list-group">
+        <div class="todo-heading">ToDo Tasks</div>
+        {
+          task.length?
+            <ul class="list-group">
           {task.map((item) => (
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span class="task-title">{item.title}</span>
               <small>{item.date}</small>
-              <span class="badge badge-primary badge-pill">{item.status}</span>
+              <span class="badge badge-danger badge-pill">{item.status}</span>
               <span
                 onClick={() => {
                   completeTask(item.title);
@@ -95,8 +109,32 @@ export default function Tasks(props) {
               </span>
             </li>
           ))}
-        </ul>
+            </ul> : <span class="empty-message"> No Items at this moment</span> 
+        }  
+        <div class="completed-heading">Completed Tasks</div>
+        {
+          completed.length? 
+            <ul class="list-group">
+          {completed.map((item) => (
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="task-title">{item.title}</span>
+              <small>{item.date}</small>
+              <span class="badge badge-success badge-pill">{item.status}</span>
+              <span
+                onClick={() => {
+                  deleteTask(item.title);
+                }}
+                id={`${item.title} clear-button`}
+                class="completed"
+              >
+                <i className="fa fa-times" id={`${item.title}-times`}></i>
+              </span>
+            </li>
+          ))}
+            </ul> : <span class="empty-message">No Completed Tasks</span>
+        }
       </div>
+  
     </>
   );
 }
