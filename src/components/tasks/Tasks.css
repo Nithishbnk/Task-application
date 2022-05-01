@@ -1,0 +1,76 @@
+.task-form {
+  height: 18%;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.input-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.input-label {
+  width: 20%;
+  margin: 20px;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#task-item {
+  width: 60%;
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#add-button {
+  margin-right: 20px;
+}
+
+.item-group {
+  width: 90%;
+  height: 82%;
+  text-align: center;
+}
+
+.badge {
+  background-color: red;
+}
+
+.fa {
+  height: 10px;
+}
+
+.completed {
+  width: 30px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: grey;
+  cursor: pointer; 
+  transition: color 1s ease;
+transition: background 1s ease;
+}
+
+
+.completed:hover {
+  animation-name: complete;
+  animation-duration: 1s;
+  background-color: yellow;
+}
+
+.list-group-item{
+  margin-top:5px;
+}
+
+.task-title{
+  font-weight: bold;
+  color: purple;
+  font-size: 18px;
+}
