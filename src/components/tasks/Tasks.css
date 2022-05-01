@@ -39,10 +39,6 @@
   text-align: center;
 }
 
-.badge {
-  background-color: red;
-}
-
 .fa {
   height: 10px;
 }
@@ -52,17 +48,14 @@
   text-align: center;
   border: 1px solid black;
   border-radius: 25px;
-  background-color: grey;
   cursor: pointer; 
-  transition: color 1s ease;
-transition: background 1s ease;
+  transition: color 0.5s ease;
+  transition: background 0.5s ease;
 }
 
 
 .completed:hover {
-  animation-name: complete;
-  animation-duration: 1s;
-  background-color: yellow;
+  background-color: lightgreen;
 }
 
 .list-group-item{
@@ -73,4 +66,18 @@ transition: background 1s ease;
   font-weight: bold;
   color: purple;
   font-size: 18px;
+}
+
+.completed-heading, .todo-heading{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.empty-message{
+  color: grey;
+  font-size: 25px;
+  font-style: italic;
+
 }

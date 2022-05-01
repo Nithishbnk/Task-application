@@ -12,7 +12,8 @@ export default function Body(props) {
         <div class="tasks">
           <Tasks />
         </div>
-        <div class="completed-tasks"></div>
+        <div class="completed-tasks">
+        </div>
       </div>
     </>
   );
