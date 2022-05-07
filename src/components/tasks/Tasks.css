@@ -1,5 +1,41 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+#headertitle {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  display: inline-block;
+  position: relative;
+  font-family: "Merriweather", serif;
+  mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #000 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  mask-size: 200%;
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
 .task-form {
-  height: 18%;
+  height: 13%;
   width: 100%;
   margin-top: 10px;
 }
@@ -21,6 +57,7 @@
 #task-item {
   width: 60%;
   margin: 20px;
+  border-radius: 0;
 }
 
 .buttons {
@@ -31,12 +68,44 @@
 
 #add-button {
   margin-right: 20px;
+  border-radius: 0;
+}
+
+#clear-button {
+  border-radius: 0;
 }
 
 .item-group {
-  width: 90%;
-  height: 82%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.todo-listing {
+  width: 33%;
+}
+
+.ongoing-listing {
+  width: 33%;
+}
+
+.completed-listing {
+  width: 33%;
+}
+
+@media only screen and (max-width: 600px) {
+  .todo-listing {
+    width: 100%;
+  }
+
+  .ongoing-listing {
+    width: 100%;
+  }
+
+  .completed-listing {
+    width: 100%;
+  }
 }
 
 .fa {
@@ -44,40 +113,148 @@
 }
 
 .completed {
-  width: 30px;
+  width: 8rem;
   text-align: center;
+  cursor: pointer;
+  transition: color 0.5s ease;
+  transition: background 0.5s ease;
   border: 1px solid black;
-  border-radius: 25px;
-  cursor: pointer; 
+}
+
+.completed:hover {
+  background-color: grey;
+  color: white;
+}
+
+.deleteicon:hover {
+  background-color: grey;
+  color: white;
   transition: color 0.5s ease;
   transition: background 0.5s ease;
 }
 
-
-.completed:hover {
-  background-color: lightgreen;
+.list-group-item {
+  margin-top: 5px;
+  width: 80%;
+  background: rgba(221, 240, 245, 0.14);
+  border-radius: 16px !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.7px);
+  -webkit-backdrop-filter: blur(8.7px);
+  border: 1px solid rgba(221, 240, 245, 1) !important;
+  flex-wrap: wrap;
 }
 
-.list-group-item{
-  margin-top:5px;
-}
-
-.task-title{
+.task-title {
   font-weight: bold;
   color: purple;
   font-size: 18px;
 }
 
-.completed-heading, .todo-heading{
+.completed-heading,
+.todo-heading {
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 18px;
 }
 
-.empty-message{
+.empty-message {
   color: grey;
   font-size: 25px;
   font-style: italic;
+}
 
+.task-list {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0px 0px 10px 2px black, 0px 0px 10px 2px black;
+  animation: pulse 1s alternate infinite;
+  animation: pulse 1s alternate infinite;
+  height: 0.1px;
+}
+
+@keyframes pulse {
+  0% {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0px 0px 10px 2px black, 0px 0px 5px 2px black;
+  }
+  100% {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: inset 0px 0px 10px 2px black, 0px 0px 15px 2px black;
+  }
+}
+
+#notification-area {
+  position: fixed;
+  top: 0px;
+  right: 10px;
+  width: 250px;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#notification-area .notification {
+  position: relative;
+  padding: 15px 10px;
+  background: #111;
+  color: black;
+  font-family: "Raleway";
+  font-size: 14px;
+  font-weight: 600;
+  margin: 5px 0px;
+  opacity: 0;
+  left: 20px;
+  animation: showNotification 500ms ease-in-out forwards;
+}
+
+@keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 1;
+  }
+
+  50% {
+    display: none;
+    opacity: 1;
+  }
+
+  100% {
+    display: block;
+    opacity: 0;
+  }
+}
+
+#notification-area .fade_out {
+  animation: fadeInFromNone 5s ease-out;
+}
+
+@keyframes showNotification {
+  to {
+    opacity: 1;
+    left: 0px;
+  }
+}
+#notification-area .notification.success {
+  background-color: #7cffcb;
+  background-image: linear-gradient(315deg, #7cffcb 0%, #74f2ce 74%);
+}
+#notification-area .notification.error {
+  background-color: #a40606;
+  background-image: linear-gradient(315deg, #a40606 0%, #d98324 74%);
+  color: white;
+}
+#notification-area .notification.info {
+  background-color: #fbb034;
+  background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+}
+
+.fa-times {
+  width: 2rem;
 }
