@@ -17,13 +17,13 @@ export default function Tasks(props) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
   }
 
-  const initTask = JSON.parse(getCookie("taskcookie"))?.length
+  const initTask = getCookie("taskcookie") && JSON.parse(getCookie("taskcookie"))?.length
     ? JSON.parse(getCookie("taskcookie"))
     : [];
-  const initOngoing = JSON.parse(getCookie("ongoingcookie"))?.length
+  const initOngoing = getCookie("ongoingcookie") && JSON.parse(getCookie("ongoingcookie"))?.length
     ? JSON.parse(getCookie("ongoingcookie"))
     : [];
-  const initCompleted = JSON.parse(getCookie("completedcookie"))?.length
+  const initCompleted = getCookie("completedcookie") && JSON.parse(getCookie("completedcookie"))?.length
     ? JSON.parse(getCookie("completedcookie"))
     : [];
 
