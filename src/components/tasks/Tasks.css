@@ -193,12 +193,30 @@
   position: fixed;
   top: 0px;
   right: 10px;
-  width: 250px;
-  height: 40vh;
+  width: 270px;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
+
+@media only screen and (max-width: 600px) {
+  #notification-area {
+    position: fixed;
+    top: 0px;
+    right: 10px;
+    width: 250px;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.fa {
+  height: 10px;
+}
+
 
 #notification-area .notification {
   position: relative;

@@ -243,7 +243,7 @@ export default function Tasks(props) {
                     id={`${item.title} clear-button`}
                     class="completed"
                   >
-                    <i className="fa fa-check" id={`${item.title}-check`}></i>
+                    START
                   </span>
                 </li>
               ))}
