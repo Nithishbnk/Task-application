@@ -17,15 +17,19 @@ export default function Tasks(props) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
   }
 
-  const initTask = getCookie("taskcookie") && JSON.parse(getCookie("taskcookie"))?.length
-    ? JSON.parse(getCookie("taskcookie"))
-    : [];
-  const initOngoing = getCookie("ongoingcookie") && JSON.parse(getCookie("ongoingcookie"))?.length
-    ? JSON.parse(getCookie("ongoingcookie"))
-    : [];
-  const initCompleted = getCookie("completedcookie") && JSON.parse(getCookie("completedcookie"))?.length
-    ? JSON.parse(getCookie("completedcookie"))
-    : [];
+  const initTask =
+    getCookie("taskcookie") && JSON.parse(getCookie("taskcookie"))?.length
+      ? JSON.parse(getCookie("taskcookie"))
+      : [];
+  const initOngoing =
+    getCookie("ongoingcookie") && JSON.parse(getCookie("ongoingcookie"))?.length
+      ? JSON.parse(getCookie("ongoingcookie"))
+      : [];
+  const initCompleted =
+    getCookie("completedcookie") &&
+    JSON.parse(getCookie("completedcookie"))?.length
+      ? JSON.parse(getCookie("completedcookie"))
+      : [];
 
   const [input, setInput] = useState("");
   const [task, setTask] = useState(initTask);
@@ -118,13 +122,13 @@ export default function Tasks(props) {
     }
   };
 
-  function clearTask() {
+  const clearTask = () => {
     setTask((oldArray) => []);
     setOngoing((oldArray) => []);
     setCompleted((oldArray) => []);
     notify("info", "You just cleared all the tasks");
     notify("success", "Let's Start again!");
-  }
+  };
 
   const onGoingTask = (title) => {
     var ongoingindex;
@@ -206,18 +210,17 @@ export default function Tasks(props) {
           >
             ADD TASK
           </button>
-
-          <button
-            type="submit"
-            class="btn btn-secondary"
-            onClick={clearTask}
-            id="clear-button"
-          >
-            CLEAR TASKS
-          </button>
         </div>
       </form>
 
+      <button
+        type="clear"
+        class="btn btn-secondary"
+        onClick={clearTask}
+        id="clear-button"
+      >
+        CLEAR TASKS
+      </button>
       <div class="item-group">
         <div class="todo-listing">
           {" "}
